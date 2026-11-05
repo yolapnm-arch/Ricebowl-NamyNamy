@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rice Bowl - Enak, Lezat, Bikin Nagih</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --coklat: #592b16;
+    --orange: #ff9f43;
+    --cream: #fff8ed;
+    --putih: #ffffff;
+}
+
+body {
+    background: var(--cream);
+    color: var(--coklat);
+}
+
+/* NAVBAR */
+header {
+    background: var(--cream);
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px #00000010;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--coklat);
+    margin: 0 15px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--orange);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--coklat);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--orange);
+    transform: translateY(-3px);
+}
+
+/* HERO */
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 8%;
+    gap: 40px;
+    background: linear-gradient(120deg, #fff8ed, #ffe1bd);
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 55px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+    color: var(--orange);
+}
+
+.hero-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+    box-shadow: 0 15px 30px #592b1630;
+}
+
+/* SECTION */
+section {
+    padding: 70px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #80604b;
+}
+
+/* MENU */
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #0000000d;
+    transition: 0.3s;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px #592b1620;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.menu-card h3 {
+    margin: 20px 10px 10px;
+    font-size: 20px;
+}
+
+.menu-card p {
+    color: #80604b;
+    padding: 0 15px;
+    font-size: 14px;
+    min-height: 40px;
+}
+
+.harga {
+    font-size: 22px;
+    color: #e87919;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* TENTANG */
+.about {
+    background: #ffe9d0;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about img {
+    width: 45%;
+    border-radius: 25px;
+}
+
+.about-text h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* FORM PESAN */
+.order {
+    background: white;
+}
+
+.order-container {
+    max-width: 650px;
+    margin: auto;
+    background: #fff8ed;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 5px 25px #00000010;
+}
+
+.order-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e2cbb6;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--orange);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.total {
+    background: #ffe1bd;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-btn {
+    width: 100%;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.order-btn:hover {
+    background: #128C7E;
+}
+
+/* FOOTER */
+footer {
+    background: var(--coklat);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    line-height: 1.8;
+}
+
+footer span {
+    color: var(--orange);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero-text h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 45px 6%;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+    }
+
+    section {
+        padding: 50px 6%;
+    }
+
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about img {
+        width: 100%;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .order-container {
+        padding: 25px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+
+    <div class="logo">
+        🍚 Rice<span>Bowl.</span>
+    </div>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#menu">Menu</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#pesan">Pesan</a>
+    </nav>
+
+    <a href="#pesan" class="btn">
+        Pesan Sekarang
+    </a>
+
+</header>
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+
+    <div class="hero-text">
+
+        <h1>
+            Rice Bowl<br>
+            <span>Lezat & Bikin Nagih!</span>
+        </h1>
+
+        <p>
+            Nikmati rice bowl dengan rasa yang kaya,
+            bahan berkualitas, dan harga bersahabat.
+            Cocok untuk makan siang maupun malam.
+        </p>
+
+        <a href="#menu" class="btn">
+            Lihat Menu 🍴
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img
+            src="2.jpeg"
+            alt="Rice Bowl Lezat">
+
+    </div>
+
+</section>
+
+<!-- MENU -->
+<section id="menu">
+
+    <div class="section-title">
+
+        <h2>Menu Rice Bowl Kami</h2>
+
+        <p>
+            Pilihan menu terbaik untuk kamu!
+        </p>
+
+    </div>
+
+    <div class="menu-container">
+
+        <!-- PRODUK 1 -->
+        <div class="menu-card">
+
+            <img
+                src="3.jpeg"
+                alt="Rice Bowl Ayam Saus Lada Hitam">
+
+            <h3>
+                Rice Bowl Ayam Saus Lada Hitam
+            </h3>
+
+            <p>
+                Ayam crispy dengan saus lada hitam gurih
+                dan nasi hangat.
+            </p>
+
+            <div class="harga">
+                Rp13.000
+            </div>
+
+            <button
+                class="btn"
+                type="button"
+                onclick="pilihMenu('Rice Bowl Ayam Saus Lada Hitam')">
+
+                Pesan Sekarang
+
+            </button>
+
+        </div>
+
+        <!-- PRODUK 2 -->
+        <div class="menu-card">
+
+            <img
+                src="4.jpeg"
+                alt="Rice Bowl Ayam Suir">
+
+            <h3>
+                Rice Bowl Ayam Suir
+            </h3>
+
+            <p>
+                Ayam suir yang dipadukan dengan sambal
+                cabai pedas gurih dan lezat.
+            </p>
+
+            <div class="harga">
+                Rp13.000
+            </div>
+
+            <button
+                class="btn"
+                type="button"
+                onclick="pilihMenu('Rice Bowl Ayam Suir')">
+
+                Pesan Sekarang
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TENTANG -->
+<section class="about" id="tentang">
+
+    <img
+        src="5.jpeg"
+        alt="Rice Bowl Fresh">
+
+    <div class="about-text">
+
+        <h2>
+            Kenapa Harus Rice Bowl Kami?
+        </h2>
+
+        <p>
+            🍚 Makanan lezat dan bikin nagih.
+        </p>
+
+        <p>
+            🥗 Menggunakan bahan fresh dan berkualitas.
+        </p>
+
+        <p>
+            💰 Harga terjangkau untuk semua kalangan.
+        </p>
+
+        <p>
+            🚚 Praktis, mudah dipesan, dan cocok
+            untuk menemani aktivitas kamu.
+        </p>
+
+        <a href="#pesan" class="btn">
+            Pesan Sekarang
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FORM PEMESANAN -->
+<section class="order" id="pesan">
+
+    <div class="section-title">
+
+        <h2>
+            Pesan Rice Bowl Sekarang!
+        </h2>
+
+        <p>
+            Isi formulir di bawah untuk melakukan pemesanan.
+        </p>
+
+    </div>
+
+    <div class="order-container">
+
+        <h2>
+            Form Pemesanan 🍱
+        </h2>
+
+        <form id="formPesan">
+
+            <!-- NAMA -->
+            <div class="form-group">
+
+                <label for="nama">
+                    Nama Pemesan
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama kamu"
+                    required>
+
+            </div>
+
+            <!-- ALAMAT -->
+            <div class="form-group">
+
+                <label for="alamat">
+                    Alamat Pengiriman
+                </label>
+
+                <textarea
+                    id="alamat"
+                    placeholder="Masukkan alamat lengkap"
+                    required></textarea>
+
+            </div>
+
+            <!-- MENU -->
+            <div class="form-group">
+
+                <label for="menu">
+                    Pilih Menu
+                </label>
+
+                <select id="menu" required>
+
+                    <option value="">
+                        -- Pilih Rice Bowl --
+                    </option>
+
+                    <option value="Rice Bowl Ayam Saus Lada Hitam">
+                        Rice Bowl Ayam Saus Lada Hitam - Rp13.000
+                    </option>
+
+                    <option value="Rice Bowl Ayam Suir">
+                        Rice Bowl Ayam Suir - Rp13.000
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- JUMLAH -->
+            <div class="form-group">
+
+                <label for="jumlah">
+                    Jumlah Pesanan
+                </label>
+
+                <input
+                    type="number"
+                    id="jumlah"
+                    min="1"
+                    value="1"
+                    required>
+
+            </div>
+
+            <!-- CATATAN -->
+            <div class="form-group">
+
+                <label for="catatan">
+                    Catatan Pesanan
+                </label>
+
+                <textarea
+                    id="catatan"
+                    placeholder="Contoh: pedas sedang, tidak pakai bawang"></textarea>
+
+            </div>
+
+            <!-- TOTAL -->
+            <div class="total">
+
+                <span>
+                    Total Harga
+                </span>
+
+                <span id="total">
+                    Rp13.000
+                </span>
+
+            </div>
+
+            <!-- TOMBOL WHATSAPP -->
+            <button
+                type="submit"
+                class="order-btn">
+
+                🟢 Pesan Melalui WhatsApp
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>
+        🍚 Rice Bowl.
+    </h2>
+
+    <p>
+        Enak • Lezat • Bikin Nagih
+    </p>
+
+    <p>
+        Hubungi kami untuk pemesanan dan informasi
+        lebih lanjut.
+    </p>
+
+    <p>
+        ©Rice Bowl NamyNamy. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script>
+
+// NOMOR WHATSAPP PENJUAL
+const nomorWhatsApp = "6281370415353";
+
+// DAFTAR HARGA PRODUK
+const hargaMenu = {
+    "Rice Bowl Ayam Saus Lada Hitam": 13000,
+    "Rice Bowl Ayam Suir": 13000
+};
+
+// FORMAT RUPIAH
+function formatRupiah(angka) {
+    return "Rp" + angka.toLocaleString("id-ID");
+}
+
+// MENGHITUNG TOTAL HARGA
+function hitungTotal() {
+
+    const menu = document.getElementById("menu").value;
+
+    const jumlah =
+        parseInt(document.getElementById("jumlah").value) || 0;
+
+    const harga = hargaMenu[menu] || 0;
+
+    const totalHarga = harga * jumlah;
+
+    document.getElementById("total").innerText =
+        formatRupiah(totalHarga);
+}
+
+// MEMILIH MENU DARI KARTU PRODUK
+function pilihMenu(namaMenu) {
+
+    document.getElementById("menu").value = namaMenu;
+
+    hitungTotal();
+
+    document.getElementById("pesan").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// UPDATE TOTAL OTOMATIS
+document.getElementById("menu").addEventListener(
+    "change",
+    hitungTotal
+);
+
+document.getElementById("jumlah").addEventListener(
+    "input",
+    hitungTotal
+);
+
+// MENGIRIM PESAN KE WHATSAPP
+document.getElementById("formPesan").addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const nama =
+            document.getElementById("nama").value.trim();
+
+        const alamat =
+            document.getElementById("alamat").value.trim();
+
+        const menu =
+            document.getElementById("menu").value;
+
+        const jumlah =
+            parseInt(document.getElementById("jumlah").value);
+
+        const catatan =
+            document.getElementById("catatan").value.trim();
+
+        const harga = hargaMenu[menu];
+
+        if (!nama || !alamat) {
+            alert("Silakan isi nama dan alamat terlebih dahulu!");
+            return;
+        }
+
+        if (!harga) {
+            alert("Silakan pilih menu terlebih dahulu!");
+            return;
+        }
+
+        if (!jumlah || jumlah < 1) {
+            alert("Jumlah pesanan minimal 1!");
+            return;
+        }
+
+        const totalHarga = harga * jumlah;
+
+        const pesan =
+`Halo Rice Bowl! Saya ingin memesan:
+
+Nama Pemesan: ${nama}
+Alamat Pengiriman: ${alamat}
+
+Menu: ${menu}
+Harga Satuan: ${formatRupiah(harga)}
+Jumlah Pesanan: ${jumlah}
+Total Harga: ${formatRupiah(totalHarga)}
+
+Catatan: ${catatan || "-"}
+
+Mohon konfirmasi pesanan saya.
+Terima kasih!`;
+
+        const urlWhatsApp =
+            "https://wa.me/" +
+            nomorWhatsApp +
+            "?text=" +
+            encodeURIComponent(pesan);
+
+        window.location.href = urlWhatsApp;
+
+    }
+);
+
+// TOTAL HARGA AWAL
+hitungTotal();
+
+</script>
+
+</body>
+</html>
